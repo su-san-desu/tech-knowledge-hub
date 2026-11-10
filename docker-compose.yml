@@ -1,0 +1,16 @@
+services:
+  db:
+    image: pgvector/pgvector:pg17 # pg15, pg16, pg17 など使用したいバージョンを指定
+    container_name: tech-knowledge-db-container
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  pgdata:
