@@ -1,0 +1,9 @@
+#!/bin/sh
+
+export MSYS_NO_PATHCONV=1
+
+docker run --rm \
+ -v "$(pwd):/path" \
+ -w /path \
+ ghcr.io/gitleaks/gitleaks:latest \
+ git --pre-commit --staged --verbose
